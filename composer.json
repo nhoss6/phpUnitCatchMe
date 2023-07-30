@@ -1,0 +1,16 @@
+{
+    "name": "moham/test-unit-ph",
+    "autoload": {
+        "psr-4": {
+            "Moham\\TestUnitPh\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "mohammed djabi"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^10.2"
+    }
+}
