@@ -37,15 +37,32 @@ class GameTest extends TestCase
 
     public function testPlayerCanMoveOneStep()
     {
-        $player1 = new Player(5, 5, 1); // Position (5, 5) facing East
+        $player1 = new Player(5, 5, 1); // Position (5, 5) Direction est
         $player1->moveForward(1); // Move one step
-        $this->assertEquals([6, 5], $player1->getCoordinates()); // Check if moved one step to the East
+        $this->assertEquals([6, 5], $player1->getCoordinates()); // Vérifier si le jour a fait 2 pas direction est 
     }
 
     public function testPlayerCanMoveTwoSteps()
     {
-        $player1 = new Player(5, 5, 1); // Position (5, 5) facing East
-        $player1->moveForward(2); // Move two steps
-        $this->assertEquals([7, 5], $player1->getCoordinates()); // Check if moved two steps to the East
+        $player1 = new Player(5, 5, 1); // Position (5, 5) Direction est
+        $player1->moveForward(2); // avance 2 pas 
+        $this->assertEquals([7, 5], $player1->getCoordinates()); // Vérifier si le jour a fait 2 pas direction est 
+    }
+    public function testCanSeeEachOtherWhenAlignedHorizontally()
+    {
+        $player1 = new Player(5, 5, 1); // Position (5, 5) Direction est
+        $player2 = new Player(7, 5, 3); // Position (7, 5) Direction ouest
+        $game = new Game($player1, $player2);
+
+        $this->assertEquals(2, $game->canSeeEachOther());
+    }
+
+    public function testCannotSeeEachOtherWhenNotAlignedHorizontally()
+    {
+        $player1 = new Player(5, 5, 1); // Position (5, 5) Direction est
+        $player2 = new Player(5, 7, 3); // Position (5, 7) Direction est
+        $game = new Game($player1, $player2);
+
+        $this->assertFalse($game->canSeeEachOther());
     }
 }
