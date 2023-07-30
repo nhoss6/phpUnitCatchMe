@@ -34,4 +34,18 @@ class GameTest extends TestCase
         $game = new Game($player1, $player2);
         $this->assertTrue($game->checkForCollision());
     }
+
+    public function testPlayerCanMoveOneStep()
+    {
+        $player1 = new Player(5, 5, 1); // Position (5, 5) facing East
+        $player1->moveForward(1); // Move one step
+        $this->assertEquals([6, 5], $player1->getCoordinates()); // Check if moved one step to the East
+    }
+
+    public function testPlayerCanMoveTwoSteps()
+    {
+        $player1 = new Player(5, 5, 1); // Position (5, 5) facing East
+        $player1->moveForward(2); // Move two steps
+        $this->assertEquals([7, 5], $player1->getCoordinates()); // Check if moved two steps to the East
+    }
 }
